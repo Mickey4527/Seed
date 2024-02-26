@@ -1,6 +1,6 @@
 "use client";
 
-//import { forgotPassword } from 'app/auth/api'
+import { forgotPassword } from 'app/auth/api';
 import { useState, FormEvent } from "react";
 
 import { Input, Button } from "@nextui-org/react";
@@ -23,7 +23,7 @@ export default function ForgotPasswordPage() {
   const handleSubmit = async (e: FormEvent) => {
     if (!checkEmail(email)) return e.preventDefault();
     setLoading(true);
-    //await forgotPassword(email)
+    await forgotPassword(email)
     e.preventDefault();
     setLoading(false)
   };
@@ -34,7 +34,7 @@ export default function ForgotPasswordPage() {
       <form className="flex flex-col gap-4">
         <Input
           className="mb-1"
-          label="อีเมล์"
+          label="อีเมล"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}

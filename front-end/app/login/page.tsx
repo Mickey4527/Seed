@@ -30,8 +30,9 @@ export default function LoginPage() {
   };
 
   const handleSubmit = async (e: FormEvent) => {
-    if (!emailValidation(email)) return e.preventDefault();
-    if (!passwordValidation(password)) return e.preventDefault();
+    e.preventDefault()
+    if (!emailValidation(email)) return;
+    if (!passwordValidation(password)) return;
 
     setLoading(true);
     // await login(email, password)
