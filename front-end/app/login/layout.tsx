@@ -31,7 +31,7 @@ export default function RootLayout({
           <section className="flex flex-col items-center w-2/4 max-md:w-full h-full justify-center">
             <div 
               className="w-3/6 p-10 rounded-md dark:border-neutral-800 dark:bg-zinc-200/30 dark:from-inherit 
-                  max-2xl:w-full max-md:border-none max-md:rounded-none max-md:p-0 max-md:bg-transparent max-md:backdrop-blur-none max-md:dark:bg-transparent max-md:dark:backdrop-blur-none"
+                  max-xl:w-full max-md:border-none max-md:rounded-none max-md:p-0 max-md:bg-transparent max-md:backdrop-blur-none max-md:dark:bg-transparent max-md:dark:backdrop-blur-none"
             >
               {children}
             </div>

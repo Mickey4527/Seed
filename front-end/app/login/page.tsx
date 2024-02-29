@@ -1,10 +1,13 @@
 "use client";
 import { useState, FormEvent } from "react";
+import { useRouter } from "next/navigation";
 
 import { Input, Checkbox, Button } from "@nextui-org/react";
 //import { login } from 'app/auth/api'
 
 export default function LoginPage() {
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -35,8 +38,28 @@ export default function LoginPage() {
     if (!passwordValidation(password)) return;
 
     setLoading(true);
-    // await login(email, password)
-    setLoading(false);
+
+    //set time 10s if server fasle
+    const res = setTimeout(() => {
+                    return login(email, password)
+                  }, 10000);
+
+    if(res.ok){
+      router.push("/dashboard");
+    }
+    
+    // const result = {
+    //   error: false,
+    // }//await login(email, password)
+    // if(!result.error) {
+    //   router.push("/dashboard");
+    // }
+    // else{
+    //   setPasswordError("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+    //   setLoading(false);
+    //   return
+    // }
+    // setLoading(false);
   };
 
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { forgotPassword } from 'app/auth/api';
+//import { forgotPassword } from 'app/auth/api';
 import { useState, FormEvent } from "react";
 
 import { Input, Button } from "@nextui-org/react";
@@ -20,12 +20,13 @@ export default function ForgotPasswordPage() {
     return true;
   };
 
+
   const handleSubmit = async (e: FormEvent) => {
     if (!checkEmail(email)) return e.preventDefault();
     setLoading(true);
-    await forgotPassword(email)
+    //await forgotPassword(email)
     e.preventDefault();
-    setLoading(false)
+    //setLoading(false)
   };
 
   return (
