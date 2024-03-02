@@ -4,6 +4,7 @@
 import { useState, FormEvent } from "react";
 
 import { Input, Button } from "@nextui-org/react";
+import { SubmitButton } from '../../components/button/submit';
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -29,6 +30,8 @@ export default function ForgotPasswordPage() {
     //setLoading(false)
   };
 
+  const submitButton = SubmitButton("ส่งอีเมล", handleSubmit, loading, "w-1/2", "กำลังส่งอีเมล...");
+
   return (
     <>
       <h1 className="text-3xl font-bold mb-10">ลืมรหัสผ่าน</h1>
@@ -44,18 +47,10 @@ export default function ForgotPasswordPage() {
           errorMessage={error}
         />
         <div className="flex justify-end items-center">
-          <Button
-            color="primary"
-            type="submit"
-            onClick={handleSubmit}
-            isLoading={loading}
-          >
-            {loading
-              ? "กำลังส่งลิงค์เปลี่ยนรหัสผ่าน..."
-              : "ส่งลิงค์เปลี่ยนรหัสผ่าน"}
-          </Button>
+          {submitButton}
         </div>
       </form>
     </>
   );
 }
+

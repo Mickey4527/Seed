@@ -3,6 +3,7 @@ import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 
 import { Input, Checkbox, Button } from "@nextui-org/react";
+import { SubmitButton } from "../components/button/submit";
 //import { login } from 'app/auth/api'
 
 export default function LoginPage() {
@@ -17,6 +18,10 @@ export default function LoginPage() {
   const emailValidation = (email: string) => {
     if (email === "") {
       setEmailError("กรุณากรอกอีเมล");
+      return false;
+    }
+    if (!email.includes("@")) {
+      setEmailError("อีเมลไม่ถูกต้อง");
       return false;
     }
     setEmailError("");
@@ -61,6 +66,8 @@ export default function LoginPage() {
     // }
     // setLoading(false);
   };
+  
+  const submitButton = SubmitButton("เข้าสู่ระบบ", handleSubmit, loading, "w-1/2", "กำลังเข้าสู่ระบบ...");
 
   return (
     <>
@@ -94,14 +101,9 @@ export default function LoginPage() {
             ลืมรหัสผ่าน
           </a>
         </div>
-        <Button
-          color="primary"
-          type="submit"
-          onClick={handleSubmit}
-          isLoading={loading}
-        >
-          ลงชื่อเข้าใช้
-        </Button>
+        <div className="flex justify-end items-center">
+          {submitButton}
+        </div>
       </form>
     </>
   );
