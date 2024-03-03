@@ -1,8 +1,10 @@
-import Router from "next/navigation";
+"use client";
+import { useRouter } from "next/router";
 
-const goLogin = () => {
-  Router.push("/login");
-}
 export default function Home() {
-  return goLogin();
+  return (
+    <div>
+      <h1>Home</h1>
+    </div>
+  )
 }

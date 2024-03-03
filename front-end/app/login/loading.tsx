@@ -1,4 +1,9 @@
+import {Spinner} from "@nextui-org/react";
+
 export default function Loading() {
-    // Or a custom loading skeleton component
-    return <p>Loading...</p>
+    return (
+        <div className="flex justify-center items-center">
+            <Spinner size="lg" label="กำลังโหลด..."></Spinner>
+        </div>
+    );
 }

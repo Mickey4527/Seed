@@ -1,10 +1,12 @@
 "use client";
 
-//import { forgotPassword } from 'app/auth/api';
+import forgotPassword from "@/app/auth/api/forgot/forgotPassword";
 import { useState, FormEvent } from "react";
 
 import { Input, Button } from "@nextui-org/react";
-import { SubmitButton } from '../../components/button/submit';
+import  SubmitButton  from '../../components/button/submit';
+
+import EmailValidate from '../../auth/validate/email-validate';
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -12,25 +14,25 @@ export default function ForgotPasswordPage() {
   const [loading, setLoading] = useState(false);
 
   const checkEmail = (email: string) => {
-    if (email === "") {
-      setError("จำเป็นต้องกรอกอีเมล");
-      return false;
-    }
-
-    setError("");
+    if (!EmailValidate(email, setError)) return false;
     return true;
   };
-
 
   const handleSubmit = async (e: FormEvent) => {
     if (!checkEmail(email)) return e.preventDefault();
     setLoading(true);
-    //await forgotPassword(email)
+    await forgotPassword(email)
+      .then(() => {
+        console.log("ส่งอีเมลสำเร็จ");
+      })
+      .catch((err) => {
+        setError(err);
+      });
     e.preventDefault();
-    //setLoading(false)
+    setLoading(false)
   };
 
-  const submitButton = SubmitButton("ส่งอีเมล", handleSubmit, loading, "w-1/2", "กำลังส่งอีเมล...");
+  const submitButton = SubmitButton("ส่งอีเมล", handleSubmit, loading, "กำลังส่งอีเมล...", "w-1/2");
 
   return (
     <>

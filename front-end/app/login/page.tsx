@@ -3,28 +3,23 @@ import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 
 import { Input, Checkbox, Button } from "@nextui-org/react";
-import { SubmitButton } from "../components/button/submit";
-//import { login } from 'app/auth/api'
+import SubmitButton  from "../components/button/submit";
+
+import EmailValidate from "../auth/validate/email-validate";
+import Login from "../auth/api/login";
 
 export default function LoginPage() {
   const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const emailValidation = (email: string) => {
-    if (email === "") {
-      setEmailError("กรุณากรอกอีเมล");
-      return false;
-    }
-    if (!email.includes("@")) {
-      setEmailError("อีเมลไม่ถูกต้อง");
-      return false;
-    }
-    setEmailError("");
+    if (!EmailValidate(email, setEmailError)) return false;
     return true;
   };
 
@@ -38,36 +33,30 @@ export default function LoginPage() {
   };
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!emailValidation(email)) return;
     if (!passwordValidation(password)) return;
 
     setLoading(true);
-
-    //set time 10s if server fasle
-    const res = setTimeout(() => {
-                    return login(email, password)
-                  }, 10000);
-
-    if(res.ok){
-      router.push("/dashboard");
-    }
-    
-    // const result = {
-    //   error: false,
-    // }//await login(email, password)
-    // if(!result.error) {
-    //   router.push("/dashboard");
-    // }
-    // else{
-    //   setPasswordError("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
-    //   setLoading(false);
-    //   return
-    // }
-    // setLoading(false);
+    await Login(email, password, remember)
+      .then(() => {
+        console.log("เข้าสู่ระบบสำเร็จ");
+        router.push("/dashboard");
+      })
+      .catch((err) => {
+        console.log(err);
+        setPasswordError("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+      });
+    setLoading(false);
   };
-  
-  const submitButton = SubmitButton("เข้าสู่ระบบ", handleSubmit, loading, "w-1/2", "กำลังเข้าสู่ระบบ...");
+
+  const submitButton = SubmitButton(
+    "เข้าสู่ระบบ",
+    handleSubmit,
+    loading,
+    "กำลังเข้าสู่ระบบ...",
+    "w-1/2"
+  );
 
   return (
     <>
@@ -94,16 +83,17 @@ export default function LoginPage() {
           errorMessage={passwordError}
         />
         <div className="flex justify-between items-center">
-          <Checkbox checked={true} onChange={() => {}}>
-            <p className="text-zinc-500">จดจำฉัน</p>
+          <Checkbox
+            checked={true}
+            onChange={(e) => setRemember(e.target.checked)}
+          >
+            <p className="text-zinc-700">จดจำฉัน</p>
           </Checkbox>
-          <a href="login/forgotPassword" className="text-blue-600">
+          <a href="login/forgotPassword" className="text-forest-green-700">
             ลืมรหัสผ่าน
           </a>
         </div>
-        <div className="flex justify-end items-center">
-          {submitButton}
-        </div>
+        <div className="flex justify-end items-center">{submitButton}</div>
       </form>
     </>
   );

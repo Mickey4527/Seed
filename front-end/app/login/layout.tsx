@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import Image from "next/image";
 import { Suspense } from "react";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "ลงชื่อเข้าใช้",
@@ -16,39 +13,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Suspense fallback="Loading">
-          
-        </Suspense>
-        <main className="flex min-h-screen flex-row flex-wrap items-center justify-between p-10">
-          <section className="flex flex-col items-center w-2/4 h-full">
-            <div className="z-10 max-w-5xl w-full items-center justify-center font-mono text-sm lg:flex">
-            <svg width="1100" height="100" viewBox="0 0 1100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="100" height="100" fill="#f4faf3" x="0" y="0"/>
-                <rect width="100" height="100" fill="#e4f5e3" x="100" y="0"/>
-                <rect width="100" height="100" fill="#c7ebc7" x="200" y="0"/>
-                <rect width="100" height="100" fill="#9cd99c" x="300" y="0"/>
-                <rect width="100" height="100" fill="#6abf69" x="400" y="0"/>
-                <rect width="100" height="100" fill="#44a344" x="500" y="0"/>
-                <rect width="100" height="100" fill="#338533" x="600" y="0"/>
-                <rect width="100" height="100" fill="#2b6a2c" x="700" y="0"/>
-                <rect width="100" height="100" fill="#265527" x="800" y="0"/>
-                <rect width="100" height="100" fill="#214622" x="900" y="0"/>
-                <rect width="100" height="100" fill="#0e250f" x="1000" y="0"/>
-            </svg>
-            </div>
-          </section>
-          <section className="flex flex-col items-center w-2/4 max-md:w-full h-full justify-center">
-            <div 
-              className="w-3/6 p-10 rounded-md dark:border-neutral-800 dark:bg-zinc-200/30 dark:from-inherit 
+    <>
+      <main className="flex min-h-screen flex-row flex-wrap items-center justify-between p-10">
+        <section className="flex flex-col items-center w-2/4 h-full">
+          <div className="z-10 max-w-5xl w-full items-center justify-center font-mono text-sm lg:flex">
+            <Image src="/RMUTT.png" alt="RMUTT" width={500} height={500} priority={true} />
+          </div>
+        </section>
+        <section className="flex flex-col items-center w-2/4 max-md:w-full h-full justify-center">
+          <div
+            className="w-3/6 p-10 rounded-md dark:border-neutral-800 dark:bg-zinc-50/75 dark:from-inherit
+                  max-2xl:w-4/6 
                   max-xl:w-full max-md:border-none max-md:rounded-none max-md:p-0 max-md:bg-transparent max-md:backdrop-blur-none max-md:dark:bg-transparent max-md:dark:backdrop-blur-none"
-            >
-              {children}
-            </div>
-          </section>
-        </main>
-      </body>
-    </html>
+          >
+            <Suspense fallback="Loading">{children}</Suspense>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
