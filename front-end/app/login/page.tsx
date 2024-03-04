@@ -2,7 +2,7 @@
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 
-import { Input, Checkbox, Button } from "@nextui-org/react";
+import { Input, Checkbox, cn } from "@nextui-org/react";
 import SubmitButton  from "../components/button/submit";
 
 import EmailValidate from "../auth/validate/email-validate";
@@ -46,8 +46,8 @@ export default function LoginPage() {
       .catch((err) => {
         console.log(err);
         setPasswordError("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+        setLoading(false);
       });
-    setLoading(false);
   };
 
   const submitButton = SubmitButton(
@@ -64,7 +64,7 @@ export default function LoginPage() {
       <form className="flex flex-col gap-4">
         <Input
           className="mb-1"
-          label="Email"
+          label="อีเมล"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -74,7 +74,7 @@ export default function LoginPage() {
         />
         <Input
           className="mb-5"
-          label="Password"
+          label="รหัสผ่าน"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -85,6 +85,9 @@ export default function LoginPage() {
         <div className="flex justify-between items-center">
           <Checkbox
             checked={true}
+            classNames={{
+              wrapper: "after:bg-forest-green-700",
+            }}
             onChange={(e) => setRemember(e.target.checked)}
           >
             <p className="text-zinc-700">จดจำฉัน</p>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Sidebar from "../components/navbar/sidebar";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
@@ -12,5 +12,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <>{children}</>;
+  return (
+    <>
+      <Suspense fallback="Loading">
+        <main className="flex min-h-screen flex-row flex-wrap items-center">
+            <Sidebar />
+          <section className="flex flex-col items-center w-2/4 max-md:w-full h-full justify-center">
+            {children}
+          </section>
+        </main>
+      </Suspense>
+    </>
+  );
 }
