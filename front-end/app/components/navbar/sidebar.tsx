@@ -1,18 +1,44 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
+import { Layers, Settings, ArrowBackIos } from "@mui/icons-material";
 
 function Sidebar() {
+  const [width, setWidth] = useState(250);
+  const [dispay, setDispay] = useState("block");
+
+  const handleResize = () => {
+    if (width === 250) {
+      setWidth(60);
+      setDispay("hidden");
+    } else {
+      setWidth(250);
+      setDispay("block");
+    }
+  };
+
   return (
-    <div className="bg-gray-900 flex-none h-screen w-[256px] hidden md:block">
+    <div
+      className="bg-shark-950 flex-none h-screen hidden md:block"
+      style={{ width: `${width}px` }}
+    >
       <nav className="flex flex-col gap-2 h-full p-3">
-        <div className="flex justify-center items-center h-20">
-          <Image
-            src="/RMUTT.png"
-            alt="RMUTT"
-            width={150}
-            height={150}
-            priority={true}
-            className="my-5"
-          />
+        <div className="flex justify-between items-center h-20">
+          <div className={`${dispay}`}>
+            <Image
+              src="/RMUTT.png"
+              alt="RMUTT"
+              width={150}
+              height={150}
+              priority={true}
+              className="my-5"
+            />
+          </div>
+          <div>
+            <a href="#" onClick={handleResize}>
+              <ArrowBackIos className="text-gray-200" />
+            </a>
+          </div>
         </div>
         <ul className="h-full grid gap-4 content-between">
           <li>
@@ -20,8 +46,9 @@ function Sidebar() {
               <li>
                 <a
                   href="/dashboard"
-                  className="block py-2.5 px-4 rounded-lg text-gray-200 hover:bg-gray-700 hover:text-white"
+                  className="block py-2.5 px-4 rounded-lg text-gray-200 hover:bg-forest-green-700/50 hover:text-white"
                 >
+                  <Layers className="mr-2" />
                   แผนที่
                 </a>
               </li>
@@ -31,10 +58,11 @@ function Sidebar() {
             <ul>
               <li>
                 <a
-                    href="/dashboard/settings"
-                    className="block py-2.5 px-4 rounded-lg text-gray-200 hover:bg-gray-700 hover:text-white"
+                  href="/dashboard/settings"
+                  className="block py-2.5 px-4 rounded-lg text-gray-200 hover:bg-gray-700 hover:text-white"
                 >
-                    Settings
+                  <Settings className="mr-2" />
+                  Settings
                 </a>
               </li>
             </ul>
