@@ -17,13 +17,12 @@ function Sidebar() {
         <ul className="h-full grid gap-4 content-between">
           <li>
             <ul>
-              <li className="text-gray-200">Dashboard</li>
               <li>
                 <a
-                  href="#"
+                  href="/dashboard"
                   className="block py-2.5 px-4 rounded-lg text-gray-200 hover:bg-gray-700 hover:text-white"
                 >
-                  Settings
+                  แผนที่
                 </a>
               </li>
             </ul>
