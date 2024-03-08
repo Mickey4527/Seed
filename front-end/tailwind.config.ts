@@ -16,6 +16,19 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
+        'shark': {
+          '50': '#f5f5f6',
+          '100': '#e6e6e7',
+          '200': '#d0d0d1',
+          '300': '#aeaeb2',
+          '400': '#86878a',
+          '500': '#6b6c6f',
+          '600': '#5b5b5f',
+          '700': '#4e4f50',
+          '800': '#444546',
+          '900': '#3c3c3d',
+          '950': '#1e1e1f',
+        },
         'forest-green': {
           '50': '#f4faf3',
           '100': '#e4f5e3',

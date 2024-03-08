@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <main className="flex min-h-screen flex-row flex-wrap items-center justify-between bg-forest-green-200 max-lg:bg-white max-md:px-5">
+      <main className="flex min-h-screen flex-row flex-wrap items-center justify-between bg-forest-green-200 max-xl:bg-white max-md:px-5">
         <section className="flex flex-col items-center w-2/4 h-screen max-lg:hidden">
           <div className="z-10 max-w-5xl w-full h-full items-center justify-center font-mono text-sm lg:flex ">
             <Image
@@ -31,7 +31,7 @@ export default function RootLayout({
           <div
             className="w-3/6 p-10 rounded-md dark:bg-zinc-50 dark:from-inherit
                   max-2xl:w-4/6 border-1 dark:border-stone-300
-                  max-xl:w-full max-md:border-none max-md:rounded-none max-md:p-0 max-md:bg-transparent max-md:backdrop-blur-none max-md:dark:bg-transparent max-md:dark:backdrop-blur-none"
+                  max-xl:w-full max-xl:border-none max-md:rounded-none max-md:p-0 max-xl:bg-transparent max-md:backdrop-blur-none max-xl:dark:bg-transparent max-md:dark:backdrop-blur-none"
           >
             <Image
               src="/RMUTT.png"

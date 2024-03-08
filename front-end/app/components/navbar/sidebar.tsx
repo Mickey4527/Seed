@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function Sidebar() {
   return (
-    <div className="bg-gray-900 h-screen w-64 hidden sm:block">
+    <div className="bg-gray-900 flex-none h-screen w-[256px] hidden md:block">
       <nav className="flex flex-col gap-2 h-full p-3">
         <div className="flex justify-center items-center h-20">
           <Image

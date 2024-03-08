@@ -15,9 +15,9 @@ export default function RootLayout({
   return (
     <>
       <Suspense fallback="Loading">
-        <main className="flex min-h-screen flex-row flex-wrap items-center">
+        <main className="flex">
             <Sidebar />
-          <section className="flex flex-col items-center w-2/4 max-md:w-full h-full justify-center">
+          <section className="shrink w-full p-10">
             {children}
           </section>
         </main>
