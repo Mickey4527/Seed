@@ -4,27 +4,17 @@ import Image from "next/image";
 import { Layers, Settings, ArrowBackIos } from "@mui/icons-material";
 
 function Sidebar() {
-  const [width, setWidth] = useState(250);
-  const [dispay, setDispay] = useState("block");
 
-  const handleResize = () => {
-    if (width === 250) {
-      setWidth(60);
-      setDispay("hidden");
-    } else {
-      setWidth(250);
-      setDispay("block");
-    }
-  };
+  const [open, setOpen] = useState(false);
 
   return (
     <div
       className="bg-shark-950 flex-none h-screen hidden md:block"
-      style={{ width: `${width}px` }}
+      style={{ width: `${open? 250 : 72}px` }}
     >
-      <nav className="flex flex-col gap-2 h-full p-3">
+      <nav className={`flex flex-col gap-2 h-full p-${open ? 4 : 1}`}>
         <div className="flex justify-between items-center h-20">
-          <div className={`${dispay}`}>
+          <div className={`${open ? 'black' : 'hidden'}`}>
             <Image
               src="/RMUTT.png"
               alt="RMUTT"
@@ -35,18 +25,18 @@ function Sidebar() {
             />
           </div>
           <div>
-            <a href="#" onClick={handleResize}>
+            <a href="#" onClick={() => setOpen(!open)}>
               <ArrowBackIos className="text-gray-200" />
             </a>
           </div>
         </div>
-        <ul className="h-full grid gap-4 content-between">
+        <ul className={`${open ? 'h-full grid gap-4 content-between' : 'h-screen flex flex-col justify-between'}`}>
           <li>
             <ul>
               <li>
                 <a
                   href="/dashboard"
-                  className="block py-2.5 px-4 rounded-lg text-gray-200 hover:bg-forest-green-700/50 hover:text-white"
+                  className={`${open ? 'block text-xl' : 'flex flex-col items-center text-base'} py-2.5 px-4 rounded-lg text-gray-200 hover:bg-forest-green-700/50 hover:text-white`}
                 >
                   <Layers className="mr-2" />
                   แผนที่
