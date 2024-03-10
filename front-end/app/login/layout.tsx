@@ -19,7 +19,7 @@ export default function RootLayout({
           <div className="z-10 max-w-5xl w-full h-full items-center justify-center font-mono text-sm lg:flex ">
             <Image
               src="/screen-login.jpg"
-              alt="RMUTT"
+              alt="รูปภาพการลงชื่อเข้าใช้"
               width={500}
               height={500}
               priority={true}
@@ -34,8 +34,8 @@ export default function RootLayout({
                   max-xl:w-full max-xl:border-none max-md:rounded-none max-md:p-0 max-xl:bg-transparent max-md:backdrop-blur-none max-xl:dark:bg-transparent max-md:dark:backdrop-blur-none"
           >
             <Image
-              src="/RMUTT.png"
-              alt="RMUTT"
+              src="/Logo.png"
+              alt="โลโก้การยางแห่งประเทสไทย"
               width={150}
               height={150}
               priority={true}

@@ -12,12 +12,12 @@ function Sidebar() {
       className="bg-shark-950 flex-none h-screen hidden md:block"
       style={{ width: `${open? 250 : 72}px` }}
     >
-      <nav className={`flex flex-col gap-2 h-full p-${open ? 4 : 1}`}>
-        <div className="flex justify-between items-center h-20">
+      <nav className={`flex flex-col gap-2 h-full p-${open ? 3 : 1}`}>
+        <div className={`flex justify-${ open ? 'between': 'center'} items-center h-20`}>
           <div className={`${open ? 'black' : 'hidden'}`}>
             <Image
-              src="/RMUTT.png"
-              alt="RMUTT"
+              src="/Logo.png"
+              alt="โลโก้การยางแห่งประเทสไทย"
               width={150}
               height={150}
               priority={true}
@@ -36,7 +36,7 @@ function Sidebar() {
               <li>
                 <a
                   href="/dashboard"
-                  className={`${open ? 'block text-xl' : 'flex flex-col items-center text-base'} py-2.5 px-4 rounded-lg text-gray-200 hover:bg-forest-green-700/50 hover:text-white`}
+                  className={`${open ? 'block' : 'flex flex-col items-center'} text-base py-2.5 px-4 rounded-lg text-gray-200 hover:bg-forest-green-700/50 hover:text-white`}
                 >
                   <Layers className="mr-2" />
                   แผนที่

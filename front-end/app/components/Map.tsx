@@ -37,7 +37,7 @@ function GoogleMaps(){
 		
 		const map = new Map(mapRef.current as HTMLDivElement, options);
   
-		map.data.loadGeoJson('/thai.geojson');
+		map.data.loadGeoJson('maps/provinces.geojson');
 		google.maps.event.addListener(map.data, 'click', function(event: any) {
 		  alert(event.latLng.lat())
 		});
