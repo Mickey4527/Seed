@@ -19,7 +19,7 @@ export default function RootLayout({
           <div className="z-10 max-w-5xl w-full h-full items-center justify-center font-mono text-sm lg:flex ">
             <Image
               src="/screen-login.jpg"
-              alt="RMUTT"
+              alt="รูปภาพการลงชื่อเข้าใช้"
               width={500}
               height={500}
               priority={true}
