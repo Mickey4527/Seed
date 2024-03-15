@@ -34,8 +34,8 @@ export default function RootLayout({
                   max-xl:w-full max-xl:border-none max-md:rounded-none max-md:p-0 max-xl:bg-transparent max-md:backdrop-blur-none max-xl:dark:bg-transparent max-md:dark:backdrop-blur-none"
           >
             <Image
-              src="/RMUTT.png"
-              alt="RMUTT"
+              src={process.env.NEXT_PUBLIC_APP_LOGO!}
+              alt="การยางแห่งประเทศไทย"
               width={150}
               height={150}
               priority={true}

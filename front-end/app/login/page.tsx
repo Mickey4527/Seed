@@ -1,9 +1,10 @@
 "use client";
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 import { Input, Checkbox, cn } from "@nextui-org/react";
-import SubmitButton  from "../components/button/submit";
+import SubmitButton from "@/components/button/submit";
 
 import EmailValidate from "../auth/validate/email-validate";
 import Login from "../auth/api/login";
@@ -83,18 +84,9 @@ export default function LoginPage() {
           errorMessage={passwordError}
         />
         <div className="flex justify-between items-center">
-          <Checkbox
-            checked={true}
-            classNames={{
-              wrapper: "after:bg-forest-green-700",
-            }}
-            onChange={(e) => setRemember(e.target.checked)}
-          >
-            <p className="text-zinc-700">จดจำฉัน</p>
-          </Checkbox>
-          <a href="login/forgotPassword" className="text-forest-green-700">
+          <Link href="login/forgotPassword" className="text-forest-green-700">
             ลืมรหัสผ่าน
-          </a>
+          </Link>
         </div>
         <div className="flex justify-end items-center">{submitButton}</div>
       </form>

@@ -4,7 +4,7 @@ import forgotPassword from "@/app/auth/api/forgot/forgotPassword";
 import { useState, FormEvent } from "react";
 
 import { Input, Button } from "@nextui-org/react";
-import  SubmitButton  from '../../components/button/submit';
+import  SubmitButton  from '@/components/button/submit';
 
 import EmailValidate from '../../auth/validate/email-validate';
 

@@ -1,11 +1,14 @@
 "use client";
 import MapConfigComponent from "./map/map-config";
-import React, { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
+import Offcanvas from "./offcanvas/offcanvas";
 import { Loader } from "@googlemaps/js-api-loader";
 
 
 function GoogleMaps(){
-	const mapRef = React.useRef<HTMLDivElement>(null);
+	const mapRef = useRef<HTMLDivElement>(null);
+	const [offcanvas, setOffcanvas] = useState(false);
+	const [province, setProvince] = useState<string>("");
 
 	useEffect(() => {
 	  const initializeMap = async () => {
@@ -37,9 +40,10 @@ function GoogleMaps(){
 		
 		const map = new Map(mapRef.current as HTMLDivElement, options);
   
-		map.data.loadGeoJson('/thai.geojson');
+		map.data.loadGeoJson('maps/provinces.geojson');
 		google.maps.event.addListener(map.data, 'click', function(event: any) {
-		  alert(event.latLng.lat())
+			setOffcanvas(true);
+			setProvince(event.feature.getProperty('pro_th'));
 		});
   
 	  };
@@ -49,6 +53,9 @@ function GoogleMaps(){
   
 	return (
 	  <>
+	  	<Offcanvas headerText={province} isOpen={offcanvas} onClose={() => setOffcanvas(false)}>
+			<div>ข้อมูลจังหวด</div>
+		</Offcanvas>
 		<div className="absolute top-0 right-0 m-4 z-10 flex gap-4">
 		  <MapConfigComponent />
 		</div>

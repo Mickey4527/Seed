@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Sidebar from "../components/navbar/sidebar";
+import Sidebar from "@/components/navbar/sidebar";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {

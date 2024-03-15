@@ -1,6 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
-import GoogleMap from "../components/Map";
+import GoogleMap from "@/components/Map";
 
 export default function DashboardPage() {
   let lat = 13.5819774;
@@ -14,6 +14,8 @@ export default function DashboardPage() {
     () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
     [selectedKeys]
   );
+
+  // offcanvas
 
   return (
     <>
