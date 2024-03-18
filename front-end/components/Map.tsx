@@ -40,9 +40,25 @@ function GoogleMaps(){
 		
 		const map = new Map(mapRef.current as HTMLDivElement, options);
   
+		// map.data.loadGeoJson('maps/Soil_จ.ปทุมธานี.json');
+		// map.data.setStyle((feature) => {
+		// 	let color = "gray";
+		
+		// 	if (feature.getProperty('texture_to') === "ดินเหนียวปนทรายแป้ง") {
+		// 	  color = "red";
+		// 	}
+		// 	return /** @type {!google.maps.Data.StyleOptions} */ {
+		// 	  fillColor: color,
+		// 	  strokeColor: color,
+		// 	  strokeWeight: 2,
+		// 	};
+		//   });
+
 		map.data.loadGeoJson('maps/provinces.geojson');
 		google.maps.event.addListener(map.data, 'click', function(event: any) {
 			setOffcanvas(true);
+			map.setCenter(event.latLng);
+			map.setZoom(8);
 			setProvince(event.feature.getProperty('pro_th'));
 		});
   
