@@ -12,7 +12,7 @@ export class LoginController {
       if (email === 'completed@mail.com' && password === '123456') {
         res.status(200).send({ message: 'Login success' });
       } else {
-        res.status(400).send({ message: 'Invalid email or password' });
+        res.status(401).send({ message: 'Email or password is incorrect' });
       }
     } catch (e) {
       res.status(500).send({ message: 'Internal server error' });

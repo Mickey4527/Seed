@@ -14,16 +14,16 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <main className="flex min-h-screen flex-row flex-wrap items-center justify-between bg-forest-green-200 max-xl:bg-white max-md:px-5">
+      <main className="flex min-h-screen flex-row flex-wrap items-center justify-between bg-forest-green-100 max-xl:bg-white max-md:px-5">
         <section className="flex flex-col items-center w-2/4 h-screen max-lg:hidden">
           <div className="z-10 max-w-5xl w-full h-full items-center justify-center font-mono text-sm lg:flex ">
             <Image
-              src="/screen-login.jpg"
+              src={process.env.NEXT_PUBLIC_APP_LOGO!}
               alt="รูปภาพการลงชื่อเข้าใช้"
               width={500}
               height={500}
               priority={true}
-              className="rounded-lg object-cover w-full h-full"
+              // className="rounded-lg object-cover w-full h-full"
             />
           </div>
         </section>

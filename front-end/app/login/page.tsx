@@ -45,8 +45,7 @@ export default function LoginPage() {
         router.push("/dashboard");
       })
       .catch((err) => {
-        console.log(err);
-        setPasswordError("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+        setPasswordError(err);
         setLoading(false);
       });
   };
@@ -61,7 +60,7 @@ export default function LoginPage() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold mb-10 color-forest-green-950">ลงชื่อเข้าใช้</h1>
+      <h1 className="text-4xl font-medium mb-10 color-forest-green-950">ลงชื่อเข้าใช้</h1>
       <form className="flex flex-col gap-4">
         <Input
           className="mb-1"

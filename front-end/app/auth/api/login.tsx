@@ -12,17 +12,18 @@ async function Login(
           body: JSON.stringify({ email, password }),
         });
 
-
         if (res.ok) {
           if (remember) {
             localStorage.setItem("email", email);
           }
           resolve();
-        } else {
+        } else if (res.status === 401) {
           reject("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+        } else {
+          reject("เกิดข้อผิดพลาด (HTTP ".concat(res.status.toString(), ")"));
         }
-      } catch (e) {
-        reject("เกิดข้อผิดพลาด");
+      } catch (e: any) {
+        reject("เกิดข้อผิดพลาด ".concat(e));
       }
     }, 1000);
   });

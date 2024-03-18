@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
-import { Kanit } from "next/font/google";
+import { Noto_Sans_Thai } from "next/font/google";
 import "./globals.css";
 
-const kanit = Kanit({ weight: "400", subsets: ["latin"] });
+const fontStyle = Noto_Sans_Thai({
+  weight: ["100", "200", "300", "400", "500", "600"],
+  display: "swap",
+  subsets: ["latin", "thai"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th">
-      <body className={kanit.className}>{children}</body>
+      <body className={fontStyle.className}>{children}</body>
     </html>
   );
 }
