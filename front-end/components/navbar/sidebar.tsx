@@ -78,7 +78,7 @@ function Sidebar() {
               <li>
                 <MenuUser open={open} />
                 <Link
-                  href="/dashboard/settings"
+                  href="/settings"
                   className={`${
                     open
                       ? "grid grid-flow-row-dense grid-cols-4 items-center"

@@ -14,10 +14,14 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <main className="flex">
-        <Sidebar />
-        <section className="shrink w-full">{children}</section>
-      </main>
+      <Suspense fallback="Loading">
+        <main className="flex">
+            <Sidebar />
+          <section className="shrink w-full">
+            {children}
+          </section>
+        </main>
+      </Suspense>
     </>
   );
 }

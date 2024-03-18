@@ -1,16 +1,29 @@
-async function Login(email: string, password: string, remember: boolean) : Promise<void> {
+async function Login(
+  email: string,
+  password: string,
+  remember: boolean
+): Promise<void> {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (email === "completed@mail.com" && password === "123456") {
-        if (remember) {
-          localStorage.setItem("email", email);
-          localStorage.setItem("password", password);
+    setTimeout(async () => {
+      try {
+        const res = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        });
+
+
+        if (res.ok) {
+          if (remember) {
+            localStorage.setItem("email", email);
+          }
+          resolve();
+        } else {
+          reject("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
         }
-        resolve();
-      } else {
-        reject("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+      } catch (e) {
+        reject("เกิดข้อผิดพลาด");
       }
-      reject("เกิดข้อผิดพลาด");
     }, 1000);
   });
 }
